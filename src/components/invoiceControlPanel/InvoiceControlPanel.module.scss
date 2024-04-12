@@ -1,0 +1,117 @@
+@use "../../assets/styles/" as *;
+
+.InvoiceControlPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  row-gap: 18px;
+
+  @include sm() {
+    row-gap: 18px;
+  }
+
+  .TaskManager_controls {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    width: 100%;
+    justify-content: center;
+
+    .show_all_btn,
+    .completed_btn,
+    .pending_btn {
+      border-radius: 16px;
+      color: #ffffff;
+      padding: 6px 18px;
+      border: none;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      cursor: pointer;
+      font-family: "Sora", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+      background-color: #6899e2;
+
+      @include sm() {
+      }
+    }
+
+    // .show_all_btn {
+    //   background-color: $secondary;
+    // }
+    .show_all_btn:hover {
+      background-color: #0b53be;
+    }
+
+    // .completed_btn {
+    //   background-color: #00d2b7;
+    // }
+    .completed_btn:hover {
+      background-color: #80eadc;
+    }
+
+    // .pending_btn {
+    //   background-color: #737373;
+    // }
+    .pending_btn:hover {
+      background-color: #a5a5a5;
+    }
+
+    .active_btn {
+      border-radius: 16px;
+      color: #ffffff;
+      padding: 6px 18px;
+      border: none;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      cursor: pointer;
+      font-family: "Sora", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+      background-color: $secondary;
+    }
+  }
+
+  .TaskManager_details {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    width: 100%;
+    justify-content: center;
+
+    @include md() {
+      column-gap: 20px;
+    }
+    @include sm() {
+      column-gap: 28px;
+    }
+
+    .text_box {
+      display: flex;
+
+      h4 {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $secondaryFont;
+        text-align: center;
+      }
+
+      p {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        color: $darkFont;
+        text-align: center;
+      }
+
+      @include sm() {
+        flex-direction: column;
+        row-gap: 0;
+      }
+    }
+  }
+}

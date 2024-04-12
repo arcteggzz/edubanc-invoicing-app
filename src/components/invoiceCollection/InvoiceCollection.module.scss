@@ -1,0 +1,29 @@
+@use "../../assets/styles/" as *;
+
+.InvoiceCollection {
+  display: flex;
+  flex-direction: column;
+
+  border-top: 2px solid #eeeeee;
+  border-bottom: 2px solid #eeeeee;
+  padding: 12px 12px;
+  height: 40vh;
+  row-gap: 4px;
+  overflow-y: scroll;
+
+  @include md() {
+    height: 50vh;
+    row-gap: 3px;
+  }
+  @include sm() {
+    padding: 12px 0;
+    align-items: center;
+    height: 50vh;
+    overflow-y: scroll;
+    row-gap: 3px;
+  }
+
+  .not_found_text {
+    text-align: center;
+  }
+}

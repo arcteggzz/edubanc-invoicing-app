@@ -1,0 +1,144 @@
+@use "../../assets/styles/" as *;
+
+.SingleInvoice {
+  display: grid;
+  grid-template-columns: 6% 66% 28%;
+  width: 100%;
+  padding: 8px;
+  background-color: #f2f2f2f2;
+
+  font-family: "Inter";
+
+  @include sm() {
+    grid-template-columns: 9% 72% 19%;
+    padding: 12px 6px;
+  }
+
+  .completed_container {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 80%;
+      height: auto;
+      cursor: pointer;
+
+      @include sm() {
+        width: 100%;
+      }
+    }
+  }
+
+  .title_container {
+    width: 100%;
+    padding: 0 0 0 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 8px;
+
+    h4 {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 110%;
+      color: $darkFont;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: $secondaryFont;
+    }
+  }
+
+  .buttons_container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    @include sm() {
+      flex-direction: column;
+      row-gap: 8px;
+    }
+
+    .edit_btn {
+      border-radius: 8px;
+      background-color: $primary;
+      color: $secondary;
+      padding: 8px 20px;
+      text-align: center;
+      border: 1px solid #eeeeee;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+
+      @include sm() {
+        width: 100%;
+        text-align: center;
+        border-radius: 12px;
+      }
+    }
+
+    .edit_btn:hover {
+      background-color: $secondary;
+      color: #ffffff;
+    }
+
+    .delete_btn {
+      border-radius: 8px;
+      background-color: red;
+      color: #ffffff;
+      padding: 8px 16px;
+      text-align: center;
+      border: none;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+
+      @include sm() {
+        width: 100%;
+        text-align: center;
+        border-radius: 12px;
+      }
+    }
+
+    .delete_btn:hover {
+      background-color: rgb(199, 45, 45);
+    }
+  }
+}
+
+.category_buttton {
+  width: 100%;
+
+  button {
+    border-radius: 16px;
+    background-color: $secondary;
+    color: #ffffff;
+    // width: 100%;
+    padding: 6px 18px;
+    text-align: center;
+    border: none;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    font-family: "Inter", sans-serif;
+    cursor: not-allowed;
+
+    @include sm() {
+    }
+  }
+}

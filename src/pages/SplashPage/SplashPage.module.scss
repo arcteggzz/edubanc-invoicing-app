@@ -1,0 +1,39 @@
+@use "../../assets/styles/" as *;
+
+.SplashPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+
+  .edubancLogo {
+    width: 12vw;
+    height: auto;
+
+    animation-name: load_in_out;
+    animation-duration: 1.2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    @include sm() {
+      width: 40vw;
+      height: auto;
+    }
+  }
+}
+
+@keyframes load_in_out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
