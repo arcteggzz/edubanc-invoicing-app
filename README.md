@@ -2,7 +2,7 @@ This is the repository for the Edubanc for the Frontend Developer Role.
 
 ## WEBSITE URL
 
-https://esedere-oghenetega-edubanc-invoicing-ap.netlify.app/
+https://esedere-edubanc-invoicing-app.netlify.app/
 
 ## FIGMA DESIGN FILE
 

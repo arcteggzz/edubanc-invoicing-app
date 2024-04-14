@@ -1,10 +1,12 @@
 import styles from "./OverviewPage.module.scss";
 import {
-  EditInvoiceModal,
   CreateInvoice,
   CreateNewInvoiceModal,
   InvoiceCollection,
   InvoiceControlPanel,
+  ViewInvoiceModal,
+  DeleteAllInvoiceModal,
+  EditStatusModal,
 } from "../../components";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/app/store";
@@ -13,8 +15,14 @@ const OverviewPage = () => {
   const createTaskModalOpen = useSelector(
     (state: RootState) => state.modalsSliceReducer.createTaskModal
   );
-  const editTaskModalOpen = useSelector(
-    (state: RootState) => state.modalsSliceReducer.editTaskModal
+  const viewTaskModalOpen = useSelector(
+    (state: RootState) => state.modalsSliceReducer.viewTaskModal
+  );
+  const deleteAllTaskModalOpen = useSelector(
+    (state: RootState) => state.modalsSliceReducer.deleteAllTaskModal
+  );
+  const editInvoiceStatusModalOpen = useSelector(
+    (state: RootState) => state.modalsSliceReducer.editInvoiceStatusModal
   );
 
   return (
@@ -25,6 +33,7 @@ const OverviewPage = () => {
           <InvoiceCollection />
           <InvoiceControlPanel />
         </div>
+
         {createTaskModalOpen ? (
           <div className={styles.modal_Container}>
             <CreateNewInvoiceModal />
@@ -32,9 +41,26 @@ const OverviewPage = () => {
         ) : (
           <></>
         )}
-        {editTaskModalOpen ? (
+
+        {viewTaskModalOpen ? (
           <div className={styles.modal_Container}>
-            <EditInvoiceModal />
+            <ViewInvoiceModal />
+          </div>
+        ) : (
+          <></>
+        )}
+
+        {deleteAllTaskModalOpen ? (
+          <div className={styles.modal_Container}>
+            <DeleteAllInvoiceModal />
+          </div>
+        ) : (
+          <></>
+        )}
+
+        {editInvoiceStatusModalOpen ? (
+          <div className={styles.modal_Container}>
+            <EditStatusModal />
           </div>
         ) : (
           <></>

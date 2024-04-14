@@ -18,9 +18,14 @@
     width: 100%;
     justify-content: center;
 
+    @include sm() {
+      column-gap: 8px;
+    }
+
     .show_all_btn,
     .completed_btn,
-    .pending_btn {
+    .pending_btn,
+    .late_btn {
       border-radius: 16px;
       color: #ffffff;
       padding: 6px 18px;
@@ -35,28 +40,24 @@
       background-color: #6899e2;
 
       @include sm() {
+        padding: 6px 12px;
       }
     }
 
-    // .show_all_btn {
-    //   background-color: $secondary;
-    // }
     .show_all_btn:hover {
       background-color: #0b53be;
     }
 
-    // .completed_btn {
-    //   background-color: #00d2b7;
-    // }
     .completed_btn:hover {
       background-color: #80eadc;
     }
 
-    // .pending_btn {
-    //   background-color: #737373;
-    // }
     .pending_btn:hover {
       background-color: #a5a5a5;
+    }
+
+    .late_btn:hover {
+      background-color: #ff7070;
     }
 
     .active_btn {
@@ -106,6 +107,10 @@
         line-height: 16px;
         color: $darkFont;
         text-align: center;
+
+        @include sm() {
+          font-size: 12px;
+        }
       }
 
       @include sm() {

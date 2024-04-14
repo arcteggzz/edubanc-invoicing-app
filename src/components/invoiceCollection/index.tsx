@@ -3,15 +3,19 @@ import styles from "./InvoiceCollection.module.scss";
 import { SingleInvoice } from "..";
 import { RootState } from "../../redux/app/store";
 import { useEffect, useState } from "react";
-import { singleTaskType } from "../../types/Tasks";
+import { mainInvoiceType } from "../../types/mainInvoice";
 // import { filterControlType } from "../../../redux/features/FilterControls/FiterControlsSlice";
 
 const InvoiceCollection = () => {
-  const tasks = useSelector((state: RootState) => state.tasksSliceReducer);
+  const invoices = useSelector((state: RootState) => state.invoiceSliceReducer);
+
   const currentView = useSelector(
     (state: RootState) => state.filterControlsSliceReducer.filterControl
   );
-  const [tasksToDisplay, setTasksDisplay] = useState<singleTaskType[]>([]);
+
+  const [invoicesToDisplay, setInvoicesToDisplay] = useState<mainInvoiceType[]>(
+    []
+  );
 
   const getTimeofDay = () => {
     const currentTime = new Date();
@@ -34,53 +38,60 @@ const InvoiceCollection = () => {
 
   const getTasksToDisplay = () => {
     if (currentView === "All") {
-      setTasksDisplay(tasks);
+      setInvoicesToDisplay(invoices);
       return;
     }
     if (currentView === "Completed") {
-      const completedTasks = tasks.filter((task) => task.completed === true);
-      setTasksDisplay(completedTasks);
+      const completedInvoices = invoices.filter(
+        (invoice) => invoice.status === "completed"
+      );
+      setInvoicesToDisplay(completedInvoices);
       return;
     }
     if (currentView === "Pending") {
-      const pendingTasks = tasks.filter((task) => task.completed !== true);
-      setTasksDisplay(pendingTasks);
+      const pendingInvoices = invoices.filter(
+        (invoice) => invoice.status === "pending"
+      );
+      setInvoicesToDisplay(pendingInvoices);
+      return;
+    }
+    if (currentView === "Late") {
+      const lateInvoices = invoices.filter(
+        (invoice) => invoice.status === "late"
+      );
+      setInvoicesToDisplay(lateInvoices);
       return;
     }
   };
 
   useEffect(() => {
     getTasksToDisplay();
-  }, [currentView, tasks]);
+  }, [currentView, invoices]);
   return (
     <>
-      <main className={styles.InvoiceCollection}>
-        {tasks.length === 0 ? (
+      <section className={styles.InvoiceCollection}>
+        {invoices.length === 0 ? (
           <p
             className={styles.not_found_text}
-          >{`Good ${getTimeofDay()}, You have not created any tasks yet.`}</p>
-        ) : tasksToDisplay.length === 0 && currentView === "Completed" ? (
+          >{`Good ${getTimeofDay()}, You have not created any invoices yet.`}</p>
+        ) : invoicesToDisplay.length === 0 && currentView === "Completed" ? (
           <p
             className={styles.not_found_text}
-          >{`Good ${getTimeofDay()}, You have not completed any tasks yet. Get to work.`}</p>
-        ) : tasksToDisplay.length === 0 && currentView === "Pending" ? (
+          >{`Good ${getTimeofDay()}, You do not have any completed Invoices in your inventory. Kindly Reach out to your Clients...`}</p>
+        ) : invoicesToDisplay.length === 0 && currentView === "Pending" ? (
           <p
             className={styles.not_found_text}
-          >{`Good ${getTimeofDay()}, You have completed all your tasks. Great Job.`}</p>
+          >{`Good ${getTimeofDay()}, You do not have any pending Invoices in your inventory.`}</p>
+        ) : invoicesToDisplay.length === 0 && currentView === "Late" ? (
+          <p
+            className={styles.not_found_text}
+          >{`Good ${getTimeofDay()}, You do not have any late Invoices in your inventory.`}</p>
         ) : (
-          tasksToDisplay.map((task) => {
-            return (
-              <SingleInvoice
-                key={task.id}
-                id={task.id}
-                title={task.title}
-                description={task.description}
-                completed={task.completed}
-              />
-            );
+          invoicesToDisplay.map((invoice) => {
+            return <SingleInvoice key={invoice.id} invoice={invoice} />;
           })
         )}
-      </main>
+      </section>
     </>
   );
 };

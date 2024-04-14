@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export type filterControlType = "All" | "Completed" | "Pending";
+export type filterControlType = "All" | "Completed" | "Pending" | "Late";
 
 const initialState: { filterControl: filterControlType } = {
   filterControl: "All",
@@ -19,10 +19,13 @@ const filterControlsSlice = createSlice({
     viewPending: (state) => {
       state.filterControl = "Pending";
     },
+    viewLate: (state) => {
+      state.filterControl = "Late";
+    },
   },
 });
 
-export const { viewAll, viewCompleted, viewPending } =
+export const { viewAll, viewCompleted, viewPending, viewLate } =
   filterControlsSlice.actions;
 
 export default filterControlsSlice.reducer;
