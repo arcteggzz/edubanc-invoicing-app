@@ -15,11 +15,17 @@ const IntroductionPage = () => {
             <p>Task Description:</p>
             <p>
               Created an Invoicing Management System to allow a user manage
-              creation, editing, and deleting of Invoices.
+              creation, editing, and deleting of Invoices and many other
+              features.
             </p>
-            {/* <h6>Username:- recruiter@lendsqr.com</h6>
-            <h6>Password:- lendsQrRecruiter</h6> */}
+
             <p>Kindly note that the experience is enhanced on Desktop.</p>
+            <p style={{ color: "#2d70fd", fontWeight: 500 }}>
+              In order to enhance your experience within the application, three
+              invoices have been created for you (as presets). You can use these
+              to experiment on the application. Enjoy. Kidnly note that deleting
+              any invoice is permanent.
+            </p>
           </div>
           <Link to={routePaths.HOME} className={styles.linkLogin}>
             CLICK TO VIEW SUBMISSION

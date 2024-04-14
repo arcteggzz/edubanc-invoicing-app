@@ -1,12 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { mainInvoiceType } from "../../../types/mainInvoice";
-import { localStorageKey, getTodayDate } from "../../../utils";
+import {
+  localStorageKey,
+  getTodayDate,
+  hasDeletedAllInvoicesBeforeKey,
+  presetInvoices,
+} from "../../../utils";
 
 const getInitialState = (): mainInvoiceType[] => {
   const savedInvoices = localStorage.getItem(localStorageKey);
-  if (savedInvoices === null) {
-    return []; // If no data is found in local storage, return undefined to use the default initial state
-  }
+
+  if (savedInvoices === null) return []; // If no data is found in local storage, return undefined to use the default initial state
+
   return JSON.parse(savedInvoices);
 };
 
@@ -31,6 +36,9 @@ const invoicesSlice = createSlice({
       savedInvoices.push(newInvoice);
       const jsonData = JSON.stringify(savedInvoices);
       localStorage.setItem(localStorageKey, jsonData);
+
+      //update the local storage to indicate that templates are not needed anymore
+      localStorage.setItem(hasDeletedAllInvoicesBeforeKey, "true");
 
       //update Redux State
       state.push(newInvoice);
@@ -63,6 +71,9 @@ const invoicesSlice = createSlice({
       const jsonData = JSON.stringify(newInvoicesToSave);
       localStorage.setItem(localStorageKey, jsonData);
 
+      //update the local storage to indicate that templates are not needed anymore
+      localStorage.setItem(hasDeletedAllInvoicesBeforeKey, "true");
+
       //update Redux State
       state[index].status = action.payload.status;
     },
@@ -77,6 +88,9 @@ const invoicesSlice = createSlice({
       const jsonData = JSON.stringify(newInvoicesToSave);
       localStorage.setItem(localStorageKey, jsonData);
 
+      //update the local storage to indicate that templates are not needed anymore
+      localStorage.setItem(hasDeletedAllInvoicesBeforeKey, "true");
+
       //update Redux state
       return state.filter((invoice) => invoice.id !== action.payload.id);
     },
@@ -84,8 +98,14 @@ const invoicesSlice = createSlice({
       //update LocalStorage
       localStorage.removeItem(localStorageKey);
 
+      //update the local storage to indicate that templates are not needed anymore
+      localStorage.setItem(hasDeletedAllInvoicesBeforeKey, "true");
+
       //update Redux state
       state.splice(0, state.length);
+    },
+    addAllTemplateInvoices: (state) => {
+      if (state.length < 1) state.push(...presetInvoices);
     },
   },
 });
@@ -95,6 +115,7 @@ export const {
   updateInvoiceStatus,
   deleteInvoce,
   deleteAllInvoices,
+  addAllTemplateInvoices,
 } = invoicesSlice.actions;
 
 // export const getAllTasks = (state: { tasks: { tasks: TaskType[] } }) =>
