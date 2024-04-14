@@ -23,8 +23,8 @@ const IntroductionPage = () => {
             <p style={{ color: "#2d70fd", fontWeight: 500 }}>
               In order to enhance your experience within the application, three
               invoices have been created for you (as presets). You can use these
-              to experiment on the application. Enjoy. Kidnly note that deleting
-              any invoice is permanent.
+              to experiment on the application. Enjoy. Kindly note that deleting
+              any of the preset invoice is permanent.
             </p>
           </div>
           <Link to={routePaths.HOME} className={styles.linkLogin}>
