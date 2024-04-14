@@ -2,7 +2,8 @@
 
 .SingleInvoice {
   display: grid;
-  grid-template-columns: 6% 66% 28%;
+  grid-template-columns: 35% 15% 15% 35%;
+  justify-content: center;
   width: 100%;
   padding: 8px;
   background-color: #f2f2f2f2;
@@ -10,25 +11,8 @@
   font-family: "Inter";
 
   @include sm() {
-    grid-template-columns: 9% 72% 19%;
+    grid-template-columns: 50% 31% 19%;
     padding: 12px 6px;
-  }
-
-  .completed_container {
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-      width: 80%;
-      height: auto;
-      cursor: pointer;
-
-      @include sm() {
-        width: 100%;
-      }
-    }
   }
 
   .title_container {
@@ -47,11 +31,62 @@
       color: $darkFont;
     }
 
-    p {
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 16px;
-      color: $secondaryFont;
+    .details_container {
+      display: flex;
+      column-gap: 24px;
+
+      @include sm() {
+        flex-direction: column;
+        row-gap: 8px;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $secondaryFont;
+      }
+    }
+  }
+
+  .status_text_container {
+    display: flex;
+    align-items: center;
+
+    @include sm() {
+      display: none;
+    }
+  }
+
+  .total_text {
+    font-size: 12px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+
+    @include sm() {
+      display: none;
+    }
+  }
+
+  .mobile_details {
+    display: none;
+
+    @include sm() {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 12px;
+
+      .mobile_total_text {
+        font-size: 12px;
+        font-weight: 600;
+
+        display: flex;
+        align-items: center;
+      }
     }
   }
 

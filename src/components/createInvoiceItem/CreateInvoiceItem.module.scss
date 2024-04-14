@@ -1,0 +1,106 @@
+@use "../../assets/styles/" as *;
+
+.CreateInvoiceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(197, 197, 225);
+  padding: 10px 0;
+
+  .description_container {
+    width: 44%;
+    text-align: left;
+
+    label {
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 12px;
+      color: $secondaryFont;
+      text-align: left;
+    }
+
+    input {
+      width: 90%;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 14px;
+      color: $mainFont;
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #eeeeee;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    input:focus {
+      border: 1px solid #3167b8;
+    }
+  }
+
+  .other_elements {
+    display: flex;
+    align-items: center;
+    width: 56%;
+    justify-content: space-between;
+    column-gap: 12px;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      row-gap: 0;
+
+      label {
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 12px;
+        color: $secondaryFont;
+        text-align: left;
+      }
+
+      input {
+        width: 60px;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 14px;
+        color: $mainFont;
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #eeeeee;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+      input:focus {
+        border: 1px solid #3167b8;
+      }
+    }
+
+    .total_text_calc {
+      font-size: 12px;
+      min-width: 80px;
+    }
+
+    .delete_item_button {
+      border-radius: 20px;
+      background-color: $danger;
+      color: #ffffff;
+      width: auto;
+      padding: 12px 12px;
+      text-align: center;
+      border: none;
+      font-weight: 500;
+      font-size: 9px;
+      line-height: 12px;
+      cursor: pointer;
+      font-family: "Sora", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+
+      @include sm() {
+        display: none;
+      }
+    }
+    .delete_item_button:hover {
+      background-color: #ff9292;
+    }
+  }
+}

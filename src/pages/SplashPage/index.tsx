@@ -8,8 +8,8 @@ const SplashPage = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      navigate(routePaths.HOME);
-    }, 1500);
+      navigate(routePaths.INTRODUCTION);
+    }, 1800);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

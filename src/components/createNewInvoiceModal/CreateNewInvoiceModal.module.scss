@@ -1,8 +1,8 @@
 @use "../../assets/styles/" as *;
 
 .CreateNewInvoiceModal {
-  width: 50vw;
-  height: 50vh;
+  width: 70vw;
+  height: 80vh;
   background: $primary;
 
   display: flex;
@@ -13,7 +13,7 @@
   border: 1px solid #dddddd;
   box-shadow: 2px 1px 2px rgba(0, 22, 71, 0.045);
   row-gap: pixRem(14);
-  padding: 32px;
+  padding: 32px 32px 0 32px;
   text-align: center;
 
   @include md() {
@@ -22,22 +22,21 @@
   }
   @include sm() {
     width: 95vw;
-    height: auto;
+    height: 100vh;
     padding: 32px 16px;
+    z-index: 20;
   }
 
   .header {
+    @include sm() {
+      display: none;
+    }
+
     h1 {
       font-weight: 600;
       font-size: 30px;
       line-height: 36px;
       color: $mainFont;
-
-      @include sm() {
-        font-size: 28px;
-        line-height: 30px;
-        text-align: center;
-      }
     }
 
     p {
@@ -45,74 +44,142 @@
       font-size: 14px;
       line-height: 18px;
       color: $secondaryFont;
-
-      @include sm() {
-        font-size: 12px;
-        line-height: 14px;
-        text-align: center;
-      }
     }
   }
 
   .form_body {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 48px;
+    justify-content: space-between;
 
-    .form_fiels {
-      width: 100%;
+    @include sm() {
+      display: none;
+    }
+
+    .left_side {
+      width: 24%;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      font-family: "Inter";
-      row-gap: 20px;
+      row-gap: 32px;
 
-      .title {
+      .client_details {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 75%;
-        row-gap: 0;
+        font-family: "Inter";
+        row-gap: 8px;
 
-        @include sm() {
-          width: 100%;
+        p {
+          font-size: 20px;
+          font-weight: 700;
+          text-align: left;
         }
 
-        label {
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 18px;
-          color: $secondaryFont;
-          text-align: left;
+        .title {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          row-gap: 0;
 
-          @include sm() {
-            font-size: 12px;
-            line-height: 14px;
-            text-align: center;
+          label {
+            font-weight: 400;
+            font-size: 11px;
+            line-height: 12px;
+            color: $secondaryFont;
+            text-align: left;
           }
-        }
 
-        input {
-          width: 100%;
-          font-weight: 400;
-          font-size: 14px;
-          line-height: 18px;
-          color: $mainFont;
-          text-align: left;
-          padding: 12px;
-          border: 1px solid #eeeeee;
-          border-radius: 8px;
-          background: #ffffff;
-        }
-        input:focus {
-          border: 1px solid #3167b8;
+          input {
+            width: 100%;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 14px;
+            color: $mainFont;
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #eeeeee;
+            border-radius: 8px;
+            background: #ffffff;
+          }
+          input:focus {
+            border: 1px solid #3167b8;
+          }
         }
       }
     }
 
-    button {
+    .right_side {
+      width: 74%;
+
+      .support_text {
+        font-size: 12px;
+        color: $mainFont;
+      }
+
+      .invoice_elements {
+        width: 100%;
+        margin: 28px 0;
+      }
+
+      .add_line_button {
+        border-radius: 16px;
+        background-color: $secondary;
+        color: #ffffff;
+        width: 140px;
+        padding: 8px 18px;
+        text-align: center;
+        border: none;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        cursor: pointer;
+        font-family: "Sora", sans-serif;
+        box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+        transition: all ease 0.2s;
+
+        @include sm() {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .button_divs {
+    display: flex;
+    column-gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+
+    @include sm() {
+      display: none;
+    }
+
+    .close_button {
+      border-radius: 20px;
+      background-color: $danger;
+      color: #ffffff;
+      width: 160px;
+      padding: 12px 12px;
+      text-align: center;
+      border: none;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      cursor: pointer;
+      font-family: "Sora", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
+
+      @include sm() {
+        display: none;
+      }
+    }
+
+    .close_button:hover {
+      background-color: #ff9292;
+    }
+
+    .create_button {
       border-radius: 16px;
       background-color: $secondary;
       color: #ffffff;
@@ -133,8 +200,54 @@
       }
     }
 
-    button:hover {
+    .create_button:hover {
       background-color: #3167b8;
+    }
+  }
+}
+
+.mobile_message {
+  display: none;
+
+  @include sm() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    row-gap: 30px;
+
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid #dddddd;
+    box-shadow: 2px 1px 2px rgba(0, 22, 71, 0.045);
+
+    padding: 28px;
+  }
+
+  img {
+    width: 40%;
+    height: auto;
+    margin-bottom: 80px;
+  }
+
+  .close_button {
+    @include sm() {
+      border-radius: 20px;
+      background-color: $danger;
+      color: #ffffff;
+      width: 160px;
+      padding: 12px 12px;
+      text-align: center;
+      border: none;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      cursor: pointer;
+      font-family: "Sora", sans-serif;
+      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
+      transition: all ease 0.2s;
     }
   }
 }

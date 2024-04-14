@@ -1,40 +1,67 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  //control if a particular modal is opened or closed
   createTaskModal: false,
-  editTaskModal: false,
-  editModalDetails: {
-    oldId: 0,
-    oldTitle: "",
-    oldDescription: "",
-  },
+  viewTaskModal: false,
+  deleteAllTaskModal: false,
+  editInvoiceStatusModal: false,
+
+  //comtrol the Id of the selected Invoice for which modal
+  editInvoiceStatusId: null,
+  viewInvoiceId: null,
 };
 
 const modalsSlice = createSlice({
   name: "modals",
   initialState,
   reducers: {
+    //control create Task Modal
     openCreateTaskModal: (state) => {
       state.createTaskModal = true;
     },
     closeCreateTaskModal: (state) => {
       state.createTaskModal = false;
     },
-    openEditTaskModal: (state) => {
-      state.editTaskModal = true;
+
+    //control view Task Modal
+    openViewTaskModal: (state) => {
+      state.viewTaskModal = true;
     },
-    closeEditaskModal: (state) => {
-      state.editTaskModal = false;
+    closeViewTaskModal: (state) => {
+      state.viewTaskModal = false;
     },
-    setEditModalDetails: (state, action) => {
-      state.editModalDetails.oldDescription = action.payload.oldDescription;
-      state.editModalDetails.oldTitle = action.payload.oldTitle;
-      state.editModalDetails.oldId = action.payload.oldId;
+
+    //control delete all Task Modal
+    openDeleteAllTaskModal: (state) => {
+      state.deleteAllTaskModal = true;
     },
-    clearEditModalDetails: (state) => {
-      state.editModalDetails.oldDescription = "";
-      state.editModalDetails.oldTitle = "";
-      state.editModalDetails.oldId = 0;
+    closeDeleteAllTaskModal: (state) => {
+      state.deleteAllTaskModal = false;
+    },
+
+    //control edit Invoice Status Task Modal
+    openEditInvoiceStatusModal: (state) => {
+      state.editInvoiceStatusModal = true;
+    },
+    closeEditInvoiceStatusModal: (state) => {
+      state.editInvoiceStatusModal = false;
+    },
+
+    //control the set and clear for edit Invoice Status
+    setEditInvoiceStatusId: (state, action) => {
+      state.editInvoiceStatusId = action.payload.id;
+    },
+    clearEditInvoiceStatusId: (state) => {
+      state.editInvoiceStatusId = null;
+    },
+
+    //control the set and clear for view Invoice
+    setViewInvoiceId: (state, action) => {
+      state.viewInvoiceId = action.payload.id;
+    },
+    clearViewInvoiceId: (state) => {
+      state.viewInvoiceId = null;
     },
   },
 });
@@ -42,10 +69,16 @@ const modalsSlice = createSlice({
 export const {
   openCreateTaskModal,
   closeCreateTaskModal,
-  openEditTaskModal,
-  closeEditaskModal,
-  setEditModalDetails,
-  clearEditModalDetails,
+  openViewTaskModal,
+  closeViewTaskModal,
+  openDeleteAllTaskModal,
+  closeDeleteAllTaskModal,
+  openEditInvoiceStatusModal,
+  closeEditInvoiceStatusModal,
+  setEditInvoiceStatusId,
+  clearEditInvoiceStatusId,
+  setViewInvoiceId,
+  clearViewInvoiceId,
 } = modalsSlice.actions;
 
 export default modalsSlice.reducer;

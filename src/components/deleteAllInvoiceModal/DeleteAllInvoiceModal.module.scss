@@ -1,30 +1,38 @@
-@use "../../assets/styles/" as *;
+@use "../../assets/styles/index.scss" as *;
 
-.CreateInvoice {
+.DeleteAllTaskModal {
+  width: 50vw;
+  height: 50vh;
+  background: $primary;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  justify-content: space-between;
+  border-radius: 32px;
+  border: 1px solid #dddddd;
+  box-shadow: 2px 1px 2px rgba(0, 22, 71, 0.045);
   row-gap: pixRem(14);
+  padding: 32px;
+  text-align: center;
 
+  @include md() {
+    width: 80vw;
+    height: auto;
+  }
   @include sm() {
-    row-gap: pixRem(18);
+    width: 95vw;
+    height: auto;
+    padding: 32px 16px;
   }
 
-  .Header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    @include sm() {
-      row-gap: pixRem(8);
-    }
-
+  .header {
     h1 {
       font-weight: 600;
       font-size: 30px;
       line-height: 36px;
       color: $mainFont;
+      margin: 0 0 10px 0;
 
       @include sm() {
         font-size: 28px;
@@ -34,7 +42,7 @@
     }
 
     p {
-      font-weight: 400;
+      font-weight: 600;
       font-size: 14px;
       line-height: 18px;
       color: $secondaryFont;
@@ -47,42 +55,16 @@
     }
   }
 
-  .buttons_container {
+  .btn_container {
     display: flex;
-    justify-content: center;
     column-gap: 24px;
 
     @include sm() {
       flex-direction: column;
-      row-gap: pixRem(12);
+      row-gap: 24px;
     }
 
-    .new_btn {
-      border-radius: 16px;
-      background-color: $secondary;
-      color: #ffffff;
-      width: 180px;
-      padding: 8px 18px;
-      text-align: center;
-      border: none;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 18px;
-      cursor: pointer;
-      font-family: "Sora", sans-serif;
-      box-shadow: 3px 2px 4px rgba(0, 23, 71, 0.15);
-      transition: all ease 0.2s;
-
-      @include sm() {
-        width: 100%;
-      }
-    }
-
-    .new_btn:hover {
-      background-color: #3167b8;
-    }
-
-    .del_btn {
+    button {
       border-radius: 16px;
       background-color: $danger;
       color: #ffffff;
@@ -103,8 +85,8 @@
       }
     }
 
-    .del_btn:hover {
-      background-color: rgb(247, 134, 134);
+    button:hover {
+      background-color: rgb(255, 129, 129);
     }
   }
 }

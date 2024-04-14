@@ -1,0 +1,150 @@
+@use "../../assets/styles/" as *;
+
+.IntroductionPage {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 10vw;
+  justify-content: center;
+  align-items: center;
+  column-gap: 300px;
+
+  @include md {
+    column-gap: 80px;
+    row-gap: 32px;
+    padding: 0 5vw;
+  }
+
+  @include sm {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 140px;
+    padding: 0 5vw;
+    text-align: center;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+    width: 40vw;
+
+    @include sm {
+      width: 100%;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 44px;
+      color: $secondary;
+      font-family: "Sora", serif;
+
+      @include md() {
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 36px;
+      }
+
+      @include sm {
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 36px;
+      }
+
+      span {
+        color: black;
+      }
+    }
+
+    p {
+      @include sm {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        font-family: "Sora", serif;
+      }
+    }
+
+    h6 {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+      font-family: "Sora", serif;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      font-family: "Sora", serif;
+    }
+
+    .linkLogin {
+      background-color: $secondary;
+      border-radius: 22px;
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      text-decoration: none;
+      padding: 16px;
+      width: 240px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      font-family: "Sora", serif;
+
+      position: relative;
+
+      @include md {
+        font-size: 14px;
+        line-height: 18px;
+        width: 240px;
+        padding: 14px;
+      }
+
+      @include sm {
+        font-size: 12px;
+        line-height: 16px;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .pinger {
+        width: 20px;
+        height: 20px;
+        background-color: #0ea5e9;
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 50%;
+
+        animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+
+        @keyframes ping {
+          75%,
+          100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+      }
+    }
+
+    .linkLogin:hover {
+      background-color: #00aeff;
+    }
+  }
+
+  img {
+    width: 25vw;
+    height: auto;
+
+    @include sm {
+      width: 50vw;
+      height: auto;
+    }
+  }
+}
