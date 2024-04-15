@@ -11,7 +11,7 @@ const StatusText = ({ text }: StatusTextProps) => {
       text === "completed"
         ? "green"
         : text === "pending"
-        ? "yellow"
+        ? "orange"
         : text === "late"
         ? "red"
         : "black",
